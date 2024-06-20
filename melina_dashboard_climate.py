@@ -18,17 +18,24 @@ from dash import Dash, html, dcc, dash_table, callback
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc 
 
-from dotenv import dotenv_values
+from dotenv import load_dotenv
+load_dotenv()
+weather_api_key = os.getenv("WEATHER_API_KEY")
+username = os.getenv("POSTGRES_USER")
+password = os.getenv("POSTGRES_PW")
+host = os.getenv("POSTGRES_HOST")
+port = os.getenv("POSTGRES_PORT")
+db_climate = os.getenv("DB_CLIMATE")
 
 # load your .env file and read all variables you need for the db connection and for weather api
 
-config = dotenv_values("token.env")
+#config = dotenv_values("token.env")
 
-username = config['POSTGRES_USER']
-password = config['POSTGRES_PW']
-host = config['POSTGRES_HOST']
-port = config['POSTGRES_PORT']
-db_climate = config['DB_CLIMATE']
+#username = config['POSTGRES_USER']
+#password = config['POSTGRES_PW']
+#host = config['POSTGRES_HOST']
+#port = config['POSTGRES_PORT']
+#db_climate = config['DB_CLIMATE']
 
 url = f'postgresql://{username}:{password}@{host}:{port}/{db_climate}'
 
