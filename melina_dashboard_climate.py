@@ -72,10 +72,10 @@ df_grouped_weather_bucket_time = weather_df.groupby(['year_and_week','weather_bu
 
 
 df_sing = df_all[df_all['country']=='Singapore']
-df_sing = df_sing.groupby('year_and_week')[['avg_temp_c', 'total_precip_mm', 'avg_humidity']].mean().reset_index()
+df_sing = df_sing.groupby('year_and_week')[['avg_temp_c', 'total_precip_mm', 'avg_humidity']].mean().round(2).reset_index()
 
 df_asia =df_all[df_all['region']=='Asia']
-df_asia = df_asia.groupby(['year_and_week','city'])[['avg_temp_c', 'total_precip_mm', 'avg_humidity']].mean().reset_index()
+df_asia = df_asia.groupby(['year_and_week','city'])[['avg_temp_c', 'total_precip_mm', 'avg_humidity']].mean().round(2).reset_index()
 
 
 # Interactive component
@@ -87,7 +87,7 @@ fig = px.bar(df_asia,
              y='avg_temp_c',  
              color='city',
              barmode='group',
-             height=300, title = "Singapore vs Shanghai & Manilla",
+             height=300, title = "Singapore vs Shanghai vs Manilla: avg temperatures",
              color_discrete_map = {'Singapore': '#7FD4C1', 'Shanghai': 'orange', 'Manila': '#F7C0BB'})
 
 fig = fig.update_layout(
@@ -209,7 +209,8 @@ app.layout = html.Div([html.H1('Temperature Analysis in Singapore', style={'text
                        html.Div([html.Div('SINGAPORE', 
                                           style={'backgroundColor': 'coral', 'color': 'white', 
                                                  'width': '900px',
-                                                  'marginLeft': 'auto', 'marginRight': 'auto', 'width':200}),
+                                                  'marginLeft': 'auto', 'marginRight': 'auto', 
+                                                  'marginTop':25, 'marginBottom':25,'width':200}),
                                  table_updated2, graph3, dropdown, graph2, graph, graph6, graph4, graph5])
 ])
 
@@ -227,7 +228,7 @@ def update_bar_chart(city):
              color='city',
              color_discrete_map = {'Singapore': '#7FD4C1', 'Shanghai': 'orange', 'Manila': '#F7C0BB'},
              barmode='group',
-             height=400, title = "Singapore vs Shanghai & Manila",)
+             height=400, title = "Singapore vs Shanghai & Manila: avg temperatures",)
     fig2 = fig2.update_layout(
         plot_bgcolor="#222222", paper_bgcolor="#222222", font_color="white"
     )
