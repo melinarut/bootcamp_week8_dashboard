@@ -19,6 +19,9 @@ from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc 
 
 from dotenv import load_dotenv
+
+# load your .env file and read all variables you need for the db connection and for weather api
+
 load_dotenv()
 weather_api_key = os.getenv("WEATHER_API_KEY")
 username = os.getenv("POSTGRES_USER")
@@ -27,15 +30,14 @@ host = os.getenv("POSTGRES_HOST")
 port = os.getenv("POSTGRES_PORT")
 db_climate = os.getenv("DB_CLIMATE")
 
-# load your .env file and read all variables you need for the db connection and for weather api
 
-#config = dotenv_values("token.env")
+        #config = dotenv_values("token.env")
 
-#username = config['POSTGRES_USER']
-#password = config['POSTGRES_PW']
-#host = config['POSTGRES_HOST']
-#port = config['POSTGRES_PORT']
-#db_climate = config['DB_CLIMATE']
+        #username = config['POSTGRES_USER']
+        #password = config['POSTGRES_PW']
+        #host = config['POSTGRES_HOST']
+        #port = config['POSTGRES_PORT']
+        #db_climate = config['DB_CLIMATE']
 
 url = f'postgresql://{username}:{password}@{host}:{port}/{db_climate}'
 
@@ -85,7 +87,8 @@ fig = px.bar(df_asia,
              y='avg_temp_c',  
              color='city',
              barmode='group',
-             height=300, title = "Singapore vs Shanghai & Manilla")
+             height=300, title = "Singapore vs Shanghai & Manilla",
+             color_discrete_map = {'Singapore': '#7FD4C1', 'Shanghai': 'orange', 'Manila': '#F7C0BB'})
 
 fig = fig.update_layout(
         plot_bgcolor="DarkBlue", paper_bgcolor="DarkBlue", font_color="white"
@@ -95,7 +98,7 @@ graph = dcc.Graph(figure=fig)
 
 
 #Graph 2
-fig2 = px.line(df_sing, x='year_and_week', y='avg_temp_c', height=300, title="Avg temperature in Celsius", markers=True)
+fig2 = px.line(df_asia, x='year_and_week', y='avg_temp_c', height=300, title="Avg temperature in Celsius", markers=True)
 fig2 = fig2.update_layout(
         plot_bgcolor="#222222", paper_bgcolor="#222222", font_color="white"
     )
