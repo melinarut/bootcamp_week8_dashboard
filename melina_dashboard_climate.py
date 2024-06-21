@@ -87,7 +87,7 @@ fig = px.bar(df_asia,
              y='avg_temp_c',  
              color='city',
              barmode='group',
-             height=300, title = "Singapore vs Shanghai vs Manilla: avg temperatures",
+             height=300, title = "Singapore vs Shanghai vs Manila: avg temperatures",
              color_discrete_map = {'Singapore': '#7FD4C1', 'Shanghai': 'orange', 'Manila': '#F7C0BB'})
 
 fig = fig.update_layout(
@@ -191,10 +191,8 @@ dash_table.DataTable(
 
 table_updated2 = dash_table.DataTable(df_sing.to_dict('records'),
                                   [{"name": i, "id": i} for i in df_sing.columns],
-                               style_data={'color': 'white','backgroundColor': 'black'},
-                              style_header={
-                                  'backgroundColor': 'rgb(210, 210, 210)',
-                                  'color': 'black','fontWeight': 'bold'}, 
+                               style_data={'color': 'DarkMagenta','backgroundColor': 'azure'},
+                              style_header={'backgroundColor': 'Cyan','color': 'black','fontWeight': 'bold'},
                                      style_table={
                                          'minHeight': '400px', 'height': '400px', 'maxHeight': '400px',
                                          'minWidth': '900px', 'width': '900px', 'maxWidth': '900px', 
