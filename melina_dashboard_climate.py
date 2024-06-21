@@ -206,9 +206,9 @@ app.layout = html.Div([html.H1('Temperature Analysis in Singapore', style={'text
                        html.H3('These are the findings:'),
                        html.Div([html.Div('SINGAPORE', 
                                           style={'backgroundColor': 'coral', 'color': 'white', 
-                                                 'width': '900px',
+                                                 'textAlign': 'center', 'width': '900px',
                                                   'marginLeft': 'auto', 'marginRight': 'auto', 
-                                                  'marginTop':25, 'marginBottom':25,'width':200}),
+                                                  'marginTop':25, 'marginBottom':25,'width':450}),
                                  table_updated2, graph3, dropdown, graph2, graph, graph6, graph4, graph5])
 ])
 
