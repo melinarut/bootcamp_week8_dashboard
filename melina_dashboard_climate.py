@@ -209,7 +209,14 @@ app.layout = html.Div([html.H1('Temperature Analysis in Singapore', style={'text
                                                  'textAlign': 'center', 'width': '900px',
                                                   'marginLeft': 'auto', 'marginRight': 'auto', 
                                                   'marginTop':25, 'marginBottom':25,'width':450}),
-                                 table_updated2, graph3, dropdown, graph2, graph, graph6, graph4, graph5])
+                                 table_updated2, graph3, dropdown, graph2]),
+                       html.Div([html.Div('ZOOMING OUT', 
+                                          style={'textAlign': 'center','backgroundColor': 'coral', 'color': 'white', 
+                                                 'width': '2300px',
+                                                  'marginLeft': 'auto', 'marginRight': 'auto',
+                                                 'marginTop':25, 'marginBottom':25, 
+                                                 'width':450}),
+                                 graph, graph6, graph4, graph5])
 ])
 
 # Output(component_id='my-output', component_property='children'),
